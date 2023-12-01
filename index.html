@@ -3,205 +3,487 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Future Laboratory</title>
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inconsolata&family=Roboto+Mono&family=Source+Code+Pro&display=swap" rel="stylesheet">
+   
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap" rel="stylesheet">
+
+<link rel="icon" href="hero.jpeg" type="image/x-icon">
+
+
 
 <style>
+            *{
+            margin: 0;
+            padding: 0;
+            }
 
-
-
-    *{
-        margin: 0;
-        padding: 0;
-    }
-    body{
-        background-color: #001524;  
-       display: flex;
-       justify-content: center;
-       align-items: center;
-        flex-direction: column;
-    }
-    
-
-
-    .central{
-        background-color: #445D48;
-        width: 500px;
-        height: 500px;
-        border-top-right-radius:70px ;
-        display: flex;
-        flex-direction: column;
-        align-items: center;    
-        justify-content: center;
-        margin-top: 10vh;
-        transition: all 0.5s ease-in-out;
-    }
-
-
-
-.central:hover{
+body{
     background-color: #001524;
-    border-top-right-radius:10px ;
-    border-bottom-left-radius:70px ;
+}
 
+         .nav-container{
+            width: 100%;
+            height: 100px;
+            background-color: #001524;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+         }
+
+         .nav-container ul{
+             display: flex;
+             justify-content: space-around;
+             width: 50%;
+             list-style: none;
+         }
+
+         .nav-container ul li{
+             color: #D6CC99;
+             font-size: 20px;
+             font-weight: bold;
+             text-transform: uppercase;
+             letter-spacing: 2px;
+             cursor: pointer;
+             font-family: 'Roboto Mono', monospace;
+         }
+
+            .nav-container ul li:hover{
+                color: #D6CC70;
+            }
+
+            .nav-container a{
+                text-decoration: none;
+            }
+
+            .head-content{
+                width: 100%;
+                height: 20vh;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border-bottom: 1px solid #D6CC99;
+            }
+
+            .head-content h1{
+                color: #D6CC99;
+                font-size: 50px;
+                font-family: 'Inconsolata', monospace;
+                letter-spacing: 2px;
+            }
+
+.sub-head-content{
+    width: 100%;
+    height: 10vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
    
 }
 
-
-
-    .div2{
-        color: #001524;
-        font-weight: bold;
-        line-height: 1.5;
-        font-size: 18px;
-        font-family: 'Roboto', sans-serif;
-        text-align: center;
-        transition: all 0.2s ease-in-out;
-    }
-
-.div2:hover{
-    color: #445D48;
-
-}
-
-
-
-.central h1{
-   
-    color: #001524;
-    font-size: 50px;
-    font-family: 'Roboto', sans-serif;
-    text-align: center;
-    padding: 20px;
-    margin: 0;
-    text-transform: uppercase;
-    letter-spacing: 10px;
-    line-height: 1.5;
-    font-weight: 900;
-    transition: all 0.1s ease-in-out;
-}
-
-.central h1:hover{
-    color: #445D48;
-}
-
-
-
-.nepal{
+.sub-head-content h1{
     color: #D6CC99;
-    font-size: 10px;
-    font-family: 'Roboto', sans-serif; 
-    text-align: right;
-
+    font-size: 25px;
+    font-family: 'Inconsolata', monospace;
+    letter-spacing: 2px;sub-head-content;
 }
 
 
-
-
-
-
-@keyframes snakeAnimation {
-    0% {
-      transform: translateX(-100%);
-      border-radius: 0;
-    }
-    50% {
-      transform: translateX(100%);
-      border-radius: 0;
-    }
-    100% {
-      transform: translateX(100%);
-      border-radius: 50%;
-      background-color: #001524;
-    }
-  }
-
-
-  
-
-  .snake-container {
-    width: 100%;
-    overflow: hidden;
-  }
-
-  .snake {
-    width: 900px;
-    height: 4px;
-    background-color: #445D48;
-    position: relative;
-    animation: snakeAnimation 1s linear infinite;
-  }
-
-
-
-
-  .message-container {
+#notification {
     display: none;
-    width: 100%;
+    position: fixed;
+    z-index: 1000;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     background-color: #445D48;
-    color: #001524;
+    padding: 20px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     text-align: center;
-    padding: 10px;
-    font-weight: bold;
-    font-size: 24px;
-    font-family: Arial, Helvetica, sans-serif;
-    transition: all 0.2s ease-in-out;
-  }
+}
 
-  .message-container:hover{
+/* Copy button styles */
+#copyButton {
+    padding: 10px 16px;
     background-color: #001524;
-    color: #445D48;
-  }
-  
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    margin-top: 10px;
+}
 
+/* Close button styles */
+#closeButton {
+    position: absolute;
+    top: 9px;
+    right: 10px;
+    cursor: pointer;
+}
+
+#notification p {
+    color: #fff;
+    font-size: 20px;
+    margin-bottom: 10px;
+    padding: 20px;
+    font-family: 'Roboto Mono', monospace;
+}
+
+#notification p strong {
+    color: #D6CC99;
+    font-family: 'Roboto Mono', monospace;
+}
+
+
+.main-content p {
+    color: #D6CC99;
+    font-size: 20px;
+    font-family: 'Source Code Pro', monospace;
+    padding: 20px;
+    text-align: justify;
+    letter-spacing: 2px;
+}
+
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    border-bottom: 1px solid #D6CC99;
+  }
+
+  .card {
+    width: calc(33.33% - 32px);
+    margin: 16px;
+    background-color: #445D48;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .card h3 {
+    margin-bottom: 8px;
+    font-family: 'Roboto Mono', monospace;
+    color: #D6CC99;
+  }
+
+    .card p {
+        font-size: 14px;
+        color: #D6CC99;
+        font-family: 'Roboto Mono', monospace;
+    }
+
+  .card:hover {
+    transform: scale(1.05);
+  }
+
+  .card img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+  }
+
+  .card-content {
+    padding: 16px;
+  }
 
   @media (max-width: 900px) {
-    .message-container {
-      display: block;
-
-    }
-  
-
-.central{
-  display: none;
-}
-
-    body {
-      overflow: hidden;
+    .card {
+      width: calc(50% - 32px);
     }
   }
 
+  @media (max-width: 600px) {
+    .card {
+      width: calc(100% - 32px);
+    }
+  }
+
+.main-content2 p {
+    color: #D6CC99;
+    font-size: 20px;
+    font-family: 'Roboto Mono', monospace;
+    padding: 20px;
+    text-align: justify;
+    letter-spacing: 2px;
+}
+
+.main-content2 a {
+    color: rgb(153, 214, 196);
+    text-decoration: none;
+}
 
 
-</style>
+
+.find-us p { 
+    color: #D6CC99;
+    font-size: 20px;
+    font-family: 'Roboto Mono', monospace;
+    padding: 20px;
+    text-align: justify;
+    letter-spacing: 2px;
+    display: inline;
+}
+
+.find-us a{
+    color: rgb(153, 214, 196);
+    text-decoration: none;
+    font-family: 'Source Code Pro', monospace;
+ font-size: 20px;
+    text-align: justify;
+    letter-spacing: 2px;
+}
+
+.dash{
+    color: #D6CC99;
+    font-size: 20px;
+    font-family: 'Roboto Mono', monospace;
+    padding: 20px;
+    text-align: justify;
+    letter-spacing: 2px;
+    display: inline;
+}
 
 
 
+#typing-container {
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 2px solid #d3d3d3;
+  animation: typing 1s steps(20) infinite;
+}
+
+@keyframes typing {
+  0%, 50%, 100% {
+      border-right: 2px solid #ffffff;
+  }
+  25%, 75% {
+      border-right: 2px solid transparent;
+  }
+}
+
+
+.robot-container {
+  position: fixed;
+  bottom: 0;
+  left: -100px;
+  animation: roll 40s linear infinite;
+}
+
+@keyframes roll {
+  0% {
+      transform: translateX(-100px) rotate(0deg);
+  }
+  25% {
+      transform: translateX(calc(100vw + 100px)) rotate(180deg);
+  }
+  50% {
+      transform: translateX(calc(100vw + 100px)) rotate(360deg);
+  }
+  75% {
+      transform: translateX(-100px) rotate(540deg);
+  }
+  100% {
+      transform: translateX(-100px) rotate(720deg);
+  }
+}
+
+.robot {
+  width: 30px;
+  height: 30px;
+  background-color: #D6CC70;
+  border-radius: 50%;
+  position: relative;
+  animation: spin 10s linear infinite;
+  text-align: center;
+  font-family: 'Roboto Mono', monospace;
+  color: #001524;
+  font-size: 20px;
+}
+
+@keyframes spin {
+  0% {
+      transform: rotate(0deg);
+  }
+  100% {
+      transform: rotate(360deg);
+  }
+}
+
+.description {
+  opacity: 0;
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #34db98;
+  padding: 5px;
+  border-radius: 5px;
+  color: #fff;
+  font-size: 24px;
+  transition: opacity 0.3s ease-in-out;
+  transform-origin: bottom center; /* Added to set the rotation origin */
+}
+
+.robot-container:hover .description {
+  opacity: 1;
+  transform: translateX(-50%); /* Resetting translation to avoid rotation */
+}
+
+
+
+    </style>
 </head>
 <body>
     
-<div class="message-container">Expand Your Window <br> {if you are on phone ... whyy???}</div>
-    <div class="snake-container">
-        <div class="snake"></div>
+<nav>
+    <div class="nav-container">
+        <ul>
+            <a href="#"><li>Home</li></a>
+            <a href="#paragraph1"><li>Our Services</li></a>
+            <!-- <a href="#"><li>Reasearch</li></a> -->
+            <a href="#" onclick="showNotification()"><li>Contact</li></a>
+        </ul>
+
+    </div>
+</nav>
+
+<div id="notification">
+    <span id="closeButton" onclick="closeNotification()">✖</span>
+    <p>Email Us 🥳: <strong id="email">contact@futurelaboratory.tech</strong></p>
+    <button id="copyButton" onclick="copyEmail()">Copy Email</button>
+</div>
+
+
+<script>
+    function showNotification() {
+        // Display the notification
+        document.getElementById('notification').style.display = 'block';
+    }
+
+    function closeNotification() {
+        // Close the notification
+        document.getElementById('notification').style.display = 'none';
+    }
+
+    function copyEmail() {
+        // Copy the email address to the clipboard
+        var emailElement = document.getElementById('email');
+        var emailText = emailElement.innerText;
+
+        var textarea = document.createElement('textarea');
+        textarea.value = emailText;
+        document.body.appendChild(textarea);
+
+        textarea.select();
+        document.execCommand('copy');
+
+        document.body.removeChild(textarea);
+
+        alert('Email copied to clipboard!');
+    }
+</script>
+
+<div class="head-content" >
+    <h1 id="typing-container">Welcome to the Future Laboratory..</h1>
+</div>
+
+<div class="sub-head-content">
+    <h1>Where AI meets Humans</h1>
+</div>
+
+<div class="main-content"><p>We are a research company driven by a profound mission to forge a harmonious synergy between humans and artificial intelligence, fostering an environment where their collective knowledge and consciousness can thrive and evolve in unison. At the heart of our vision lies the recognition that the true potential of AI emerges not in isolation but through a profound alignment with human intellect and intuition. We strive to bridge the gap between the organic and synthetic minds, creating a collaborative ecosystem where each complements the strengths of the other. Through innovative technologies and ethical frameworks, we aim to cultivate a shared intelligence that transcends individual capabilities, ushering in an era where the augmentation of human potential is seamlessly interwoven with the vast capabilities of AI. As we celebrate our reasearch and findings, we remain dedicated to advancing this transformative mission, envisioning a future where humanity and artificial intelligence coalesce to propel collective knowledge and consciousness to unprecedented heights.
+</p></div>
+
+<div class="card-container" id="paragraph1">
+    <div class="card">
+      <img src="https://th.bing.com/th/id/OIG.QtcVSlhnSWCrzkrlu88W?pid=ImgGn" alt="Card Image">
+      <div class="card-content">
+        <h3>Custom Large Language Models</h3>
+        <p>We work on custom multimodular Large Language Models.</p>
       </div>
+    </div>
+
+    <div class="card">
+      <img src="https://th.bing.com/th/id/OIG.An2H7yh_9dppcX.7RYnb?w=1024&h=1024&rs=1&pid=ImgDetMain alt="Card Image">
+      <div class="card-content">
+        <h3>Data Science</h3>
+        <p>Data processing and refining is one of our core expertise.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="https://th.bing.com/th/id/OIG.6f8Ld4zHAdkgEviRBTs6?w=1024&h=1024&rs=1&pid=ImgDetMain" alt="Card Image">
+      <div class="card-content">
+        <h3>Full Stack</h3>
+        <p>Digital presence is very important for businesses so we help them with full and robust web design and deployment.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="https://th.bing.com/th/id/OIG.YQKV4mBTFJpDy7CsQAmA?pid=ImgGn" alt="Card Image">
+      <div class="card-content">
+        <h3>Tailoring Solutions for Your Unique Integration Needs</h3>
+        <p>Discover a new level of integration with our custom API solutions. Whether you're enhancing communication between systems or building a robust platform.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="https://th.bing.com/th/id/OIG.KfA_U1PxflXXMPh4YSIG?w=1024&h=1024&rs=1&pid=ImgDetMain" alt="Card Image">
+      <div class="card-content">
+        <h3>Custom Vision AI Models for Unmatched Accuracy</h3>
+        <p>Step into the future of visual intelligence with our personalized Vision AI Models. We specialize in tailoring models that go beyond the ordinary, providing unparalleled accuracy and insight. </p>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="https://th.bing.com/th/id/OIG.M.dUqFsRZT2cr89hW36a?w=1024&h=1024&rs=1&pid=ImgDetMain" alt="Card Image">
+      <div class="card-content">
+        <h3>Database Designs for Optimal Performance</h3>
+        <p>Experience data management like never before with our custom database design solutions. From organizing information to optimizing retrieval, our meticulously crafted designs are tailored to suit your specific needs.</p>
+      </div>
+    </div>
+  </div>
+
+
+  <script>
+    // Optionally, you can use JavaScript to handle smooth scrolling
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    });
+  </script>
 
 
 
+<div class="main-content2"><p>We are redefining the use of AI in all fields of human endeavour feel free to <a href="#" onclick="showNotification()">contact</a> us to see how we can help you to improve your business</p></div>
 
 
-<div class="central">
+<div class="find-us"><p>Find us at</p> : <a href="https://x.com/FutureLaboratry" target="_blank">X</a> <span class="dash">------------------------------------------------------------------------------------------</span> </div>
+ 
 
-    <!-- <img src="https://th.bing.com/th/id/OIG.eRnnIqNoVfTfd7WXPbjP?pid=ImgGn" alt="" width="200px"> -->
-<div class="div1"><h1>Future Laboratory</h1>
+
+
+<div class="robot-container">
+  <div class="robot">
+      <div class="robot-eye"></div>
+      <div class="robot-eye2"></div>
+      FL
+      <div class="description">Howdy...</div>
+  </div>
 </div>
-
-<div class="div2"><u>Technology based Solutions</u> <br>Empower your Life and Business through Digitalization <br>Contact us here : contact@futurelaboratory.tech</div>
-
-</div>
-
-
-
-<!-- <div class="nepal">Made in Hearts Of Himalaya</div> -->
-
+ 
 
 </body>
 </html>
