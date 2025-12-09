@@ -1,13 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Future Laboratory - AI & Custom Software</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;700&family=Roboto+Mono:wght@400;700&family=Source+Code+Pro:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="icon" href="https://th.bing.com/th/id/OIG.sCWsqEIj7WSTSRZn3T0q?w=1024&h=1024&rs=1&pid=ImgDetMain" type="image/x-icon">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;700&family=Roboto+Mono:wght@400;700&family=Source+Code+Pro:wght@400;700&display=swap"
+        rel="stylesheet">
+    <link rel="icon" href="https://th.bing.com/th/id/OIG.sCWsqEIj7WSTSRZn3T0q?w=1024&h=1024&rs=1&pid=ImgDetMain"
+        type="image/x-icon">
     <style>
         :root {
             --bg: #001524;
@@ -16,100 +20,524 @@
             --white: #fff;
             --card-bg: #052136;
         }
-        * { margin:0; padding:0; box-sizing:border-box; }
-        body { background:var(--bg); color:var(--gold); font-family:'Source Code Pro',monospace; line-height:1.6; overflow-x:hidden; }
-        .container { max-width:1200px; margin:auto; padding:0 20px; }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+        }
+
+        html {
+            overflow-y: scroll;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--gold);
+            font-family: 'Source Code Pro', monospace;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 0;
+            padding: 0 20px;
+        }
 
         /* Nav */
-        nav { position:sticky; top:0; z-index:100; background:var(--bg); border-bottom:1px solid rgba(214,204,153,.2); }
-        .nav { display:flex; justify-content:space-between; align-items:center; height:80px; }
-        .logo { font:700 28px 'Inconsolata',monospace; color:var(--cyan); text-decoration:none; letter-spacing:3px; }
-        .menu { display:flex; gap:30px; list-style:none; }
-        .menu a { color:var(--gold); font:16px 'Roboto Mono',monospace; text-transform:uppercase; letter-spacing:2px; text-decoration:none; transition:color .3s; }
-        .menu a:hover { color:#D6CC70; }
-        .hamburger { display:none; cursor:pointer; font-size:24px; color:var(--cyan); }
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: var(--bg);
+            border-bottom: 1px solid rgba(214, 204, 153, .2);
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+
+        .logo {
+            font: 700 28px 'Inconsolata', monospace;
+            color: var(--cyan);
+            text-decoration: none;
+            letter-spacing: 3px;
+        }
+
+        .menu {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .menu a {
+            color: var(--gold);
+            font: 16px 'Roboto Mono', monospace;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-decoration: none;
+            transition: color .3s;
+        }
+
+        .menu a:hover {
+            color: #D6CC70;
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 24px;
+            color: var(--cyan);
+        }
 
         /* Hero */
-        .hero { min-height:60vh; display:grid; place-items:center; text-align:center; padding:60px 20px; border-bottom:1px solid var(--gold); position:relative; }
-        .hero h1 { font:700 clamp(36px,6vw,72px) 'Inconsolata',monospace; letter-spacing:4px; margin-bottom:16px; position:relative; }
-        .hero h2 { font:400 clamp(20px,3vw,32px) 'Roboto Mono',monospace; color:var(--cyan); letter-spacing:2px; }
-        #typing-text { display:inline-block; overflow:hidden; white-space:nowrap; font-size: 50px;}
-        .cursor { display:inline-block; width:3px; height:1.1em; background:var(--white); margin-left:5px; animation:blink .7s infinite; }
-        @keyframes blink { 50%{opacity:0;} }
-        .kundalini { position:absolute; left:50%; transform:translateX(-50%); width:40px; height:180px; opacity:0; }
-        .kundalini svg { width:85%; height:85%; }
-        .staff { fill:none; stroke:var(--white); stroke-width:3; }
-        .snake { fill:none; stroke:var(--white); stroke-width:4; stroke-linecap:round; stroke-dasharray:500; stroke-dashoffset:500; animation:draw 3s linear forwards; }
-        @keyframes draw { to{stroke-dashoffset:0;} }
+        .hero {
+            min-height: 60vh;
+            display: grid;
+            place-items: center;
+            text-align: center;
+            padding: 60px 20px;
+            border-bottom: 1px solid var(--gold);
+            position: relative;
+        }
+
+        .hero h1 {
+            font: 700 clamp(36px, 6vw, 72px) 'Inconsolata', monospace;
+            letter-spacing: 4px;
+            margin-bottom: 16px;
+            position: relative;
+        }
+
+        .hero h2 {
+            font: 400 clamp(20px, 3vw, 32px) 'Roboto Mono', monospace;
+            color: var(--cyan);
+            letter-spacing: 2px;
+        }
+
+        #typing-text {
+            display: inline-block;
+            overflow: hidden;
+            white-space: nowrap;
+            font-size: 50px;
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 3px;
+            height: 1.1em;
+            background: var(--white);
+            margin-left: 5px;
+            animation: blink .7s infinite;
+        }
+
+        @keyframes blink {
+            50% {
+                opacity: 0;
+            }
+        }
+
+        .kundalini {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 180px;
+            opacity: 0;
+        }
+
+        .kundalini svg {
+            width: 85%;
+            height: 85%;
+        }
+
+        .staff {
+            fill: none;
+            stroke: var(--white);
+            stroke-width: 3;
+        }
+
+        .snake {
+            fill: none;
+            stroke: var(--white);
+            stroke-width: 4;
+            stroke-linecap: round;
+            stroke-dasharray: 500;
+            stroke-dashoffset: 500;
+            animation: draw 3s linear forwards;
+        }
+
+        @keyframes draw {
+            to {
+                stroke-dashoffset: 0;
+            }
+        }
 
         /* Sections */
-        section { padding:60px 0; }
-        h2.sec-title { text-align:center; font:24px 'Inconsolata',monospace; color:var(--cyan); margin-bottom:40px; }
+        section {
+            padding: 60px 0;
+        }
+
+        h2.sec-title {
+            text-align: center;
+            font: 24px 'Inconsolata', monospace;
+            color: var(--cyan);
+            margin-bottom: 40px;
+        }
 
         /* About */
-        .about p { font-size:18px; text-align:justify; letter-spacing:1px; line-height:1.8; margin-bottom:20px; }
+        .about p {
+            font-size: 18px;
+            text-align: justify;
+            letter-spacing: 1px;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
 
         /* Services Carousel */
-        .carousel { position:relative; overflow:hidden; }
-        .services { display:flex; transition:transform .5s ease; gap:24px; padding:0 20px; }
-        .card { flex:0 0 300px; background:var(--card-bg); border-radius:12px; overflow:hidden; box-shadow:0 8px 20px rgba(0,0,0,.4); transition:transform .3s,box-shadow .3s; position:relative; }
-        .card:hover { transform:translateY(-8px); box-shadow:0 16px 30px rgba(153,214,196,.3); }
-        .card-visual { height:180px; background:linear-gradient(135deg,var(--bg),var(--card-bg)); position:relative; overflow:hidden; }
-        .diffusion { position:absolute; inset:0; filter:url(#noise); opacity:0; transition:opacity .3s; animation:pulse 2s infinite; mix-blend-mode:screen; }
-        @keyframes pulse { 0%,100%{opacity:0;} 50%{opacity:.4;} }
-        .card:hover .diffusion { opacity:1; }
-        .card-visual::before { content:attr(data-icon); position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:64px; opacity:.4; transition:opacity .3s; color:attr(data-color); z-index:1; }
-        .card:hover .card-visual::before { opacity:.6; }
-        .card-content { padding:24px; }
-        .card h3 { font:18px 'Roboto Mono',monospace; background:var(--gold); color:var(--bg); padding:4px 10px; border-radius:4px; display:inline-block; margin-bottom:12px; }
-        .card p { font:14px 'Roboto Mono',monospace; color:var(--white); line-height:1.5; }
-        .prev, .next { position:absolute; top:50%; transform:translateY(-50%); background:rgba(0,0,0,.5); color:var(--cyan); border:none; font-size:32px; padding:10px; cursor:pointer; z-index:10; }
-        .prev { left:0; } .next { right:0; }
+        .carousel {
+            position: relative;
+            overflow: hidden;
+        }
 
+        .services {
+            display: flex;
+            transition: transform .5s ease;
+            gap: 24px;
+            padding: 0 20px;
+        }
+
+        .card {
+            flex: 0 0 300px;
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, .4);
+            transition: transform .3s, box-shadow .3s;
+            position: relative;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 16px 30px rgba(153, 214, 196, .3);
+        }
+
+        .card-visual {
+            height: 180px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Unique gradients for each card */
+        .card:nth-child(1) .card-visual {
+            background: linear-gradient(135deg, #1a0a2e 0%, #3d1a6d 50%, #7b2cbf 100%);
+        }
+
+        .card:nth-child(2) .card-visual {
+            background: linear-gradient(135deg, #0d1b2a 0%, #1b3a4b 50%, #41697f 100%);
+        }
+
+        .card:nth-child(3) .card-visual {
+            background: linear-gradient(135deg, #003d3d 0%, #006666 50%, #00a3a3 100%);
+        }
+
+        .card:nth-child(4) .card-visual {
+            background: linear-gradient(135deg, #2d1810 0%, #5c2d1a 50%, #a04128 100%);
+        }
+
+        .card:nth-child(5) .card-visual {
+            background: linear-gradient(135deg, #0a2f1f 0%, #1a5438 50%, #2e8b57 100%);
+        }
+
+        .card:nth-child(6) .card-visual {
+            background: linear-gradient(135deg, #1a1a2e 0%, #2a2a4a 50%, #4a4a7a 100%);
+        }
+
+        .diffusion {
+            position: absolute;
+            inset: 0;
+            filter: url(#noise);
+            opacity: 0;
+            transition: opacity .3s;
+            animation: pulse 2s infinite;
+            mix-blend-mode: screen;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 0;
+            }
+
+            50% {
+                opacity: .4;
+            }
+        }
+
+        .card:hover .diffusion {
+            opacity: 1;
+        }
+
+        .card-visual::before {
+            content: attr(data-icon);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 64px;
+            opacity: .4;
+            transition: opacity .3s;
+            color: attr(data-color);
+            z-index: 1;
+        }
+
+        .card:hover .card-visual::before {
+            opacity: .6;
+        }
+
+        .card-content {
+            padding: 24px;
+        }
+
+        .card h3 {
+            font: 18px 'Roboto Mono', monospace;
+            background: var(--gold);
+            color: var(--bg);
+            padding: 4px 10px;
+            border-radius: 4px;
+            display: inline-block;
+            margin-bottom: 12px;
+        }
+
+        .card p {
+            font: 14px 'Roboto Mono', monospace;
+            color: var(--white);
+            line-height: 1.5;
+        }
+
+        .prev,
+        .next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, .5);
+            color: var(--cyan);
+            border: none;
+            font-size: 32px;
+            padding: 10px;
+            cursor: pointer;
+            z-index: 10;
+        }
+
+        .prev {
+            left: 0;
+        }
+
+        .next {
+            right: 0;
+        }
+
+        /* Contact Section for Static Site */
+        .contact-section {
+            padding: 60px 0;
+            border-top: 1px solid rgba(214, 204, 153, .2);
+            text-align: center; /* Center content in the section */
+        }
+
+        .contact-wrapper {
+            max-width: 600px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 40px;
+            border: 1px solid rgba(214, 204, 153, .15);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, .4);
+        }
+
+        .contact-wrapper p {
+            font-size: 18px;
+            margin-bottom: 25px;
+            color: var(--white);
+        }
+
+        /* Styling for the mailto link */
+        .contact-link {
+            display: inline-block;
+            padding: 16px 30px;
+            background: linear-gradient(135deg, var(--gold), #c4b878);
+            border-radius: 8px;
+            color: var(--bg);
+            font: 700 16px 'Inconsolata', monospace;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-decoration: none;
+            transition: transform .2s, box-shadow .3s;
+        }
+
+        .contact-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(214, 204, 153, .3);
+        }
+        
         /* CTA */
-        .cta { text-align:center; font:20px 'Roboto Mono',monospace; letter-spacing:2px; }
-        .cta a { color:var(--cyan); text-decoration:none; transition:color .3s; }
-        .cta a:hover { color:#a0f0d9; }
+        .cta {
+            text-align: center;
+            font: 20px 'Roboto Mono', monospace;
+            letter-spacing: 2px;
+        }
+
+        .cta a {
+            color: var(--cyan);
+            text-decoration: none;
+            transition: color .3s;
+        }
+
+        .cta a:hover {
+            color: #a0f0d9;
+        }
 
         /* Footer */
-        footer { background:#000a10; border-top:1px solid rgba(214,204,153,.1); padding:40px 20px; text-align:center; }
-        .social p { display:inline; margin-right:12px; font:16px 'Roboto Mono',monospace; color:var(--gold); }
-        .social a { font:18px 'Source Code Pro',monospace; color:var(--cyan); text-decoration:none; transition:color .3s; }
-        .social a:hover { color:#a0f0d9; }
-        .copy { margin-top:16px; font:14px 'Roboto Mono',monospace; color:var(--gold); }
+        footer {
+            background: #000a10;
+            border-top: 1px solid rgba(214, 204, 153, .1);
+            padding: 40px 20px;
+            text-align: center;
+        }
 
-        /* Notification */
-        #notif { display:none; position:fixed; inset:0; background:rgba(0,21,36,.9); align-items:center; justify-content:center; z-index:1000; }
-        .notif-box { background:#445D48; padding:32px; border:2px solid var(--gold); border-radius:12px; text-align:center; max-width:400px; position:relative; }
-        .notif-box p { color:var(--white); font:20px 'Roboto Mono',monospace; margin-bottom:16px; }
-        .notif-box strong { color:var(--gold); word-break:break-all; }
-        #copyBtn { background:var(--bg); color:var(--gold); border:1px solid var(--gold); padding:10px 18px; border-radius:4px; cursor:pointer; transition:.3s; margin-top:12px; }
-        #copyBtn:hover { background:var(--gold); color:var(--bg); }
-        #closeBtn { position:absolute; top:12px; right:16px; font-size:24px; color:var(--gold); cursor:pointer; }
+        .social p {
+            display: inline;
+            margin-right: 12px;
+            font: 16px 'Roboto Mono', monospace;
+            color: var(--gold);
+        }
+
+        .social a {
+            font: 18px 'Source Code Pro', monospace;
+            color: var(--cyan);
+            text-decoration: none;
+            transition: color .3s;
+        }
+
+        .social a:hover {
+            color: #a0f0d9;
+        }
+
+        .copy {
+            margin-top: 16px;
+            font: 14px 'Roboto Mono', monospace;
+            color: var(--gold);
+        }
+
+        /* Removed original Notification and Form styling as they are no longer used */
 
         /* Robot */
-        .robot { position:fixed; bottom:20px; left:-60px; animation:roll 30s linear infinite; z-index:99; }
-        @keyframes roll { 0%{transform:translateX(-60px) rotate(0);} 100%{transform:translateX(calc(100vw + 60px)) rotate(360deg);} }
-        .bot { width:40px; height:40px; background:#D6CC70; border-radius:50%; display:grid; place-items:center; font:20px 'Roboto Mono',monospace; color:var(--bg); animation:spin 2s linear infinite; }
-        @keyframes spin { to{transform:rotate(360deg);} }
-        .tip { opacity:0; position:absolute; bottom:100%; left:50%; transform:translateX(-50%); background:#34db98; color:#fff; padding:6px 10px; border-radius:6px; font:18px monospace; transition:opacity .3s; }
-        .robot:hover .tip { opacity:1; }
+        .robot {
+            position: fixed;
+            bottom: 20px;
+            left: -60px;
+            animation: roll 30s linear infinite;
+            z-index: 99;
+        }
+
+        @keyframes roll {
+            0% {
+                transform: translateX(-60px) rotate(0);
+            }
+
+            100% {
+                transform: translateX(calc(100vw + 60px)) rotate(360deg);
+            }
+        }
+
+        .bot {
+            width: 40px;
+            height: 40px;
+            background: #D6CC70;
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            font: 20px 'Roboto Mono', monospace;
+            color: var(--bg);
+            animation: spin 2s linear infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .tip {
+            opacity: 0;
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #34db98;
+            color: #fff;
+            padding: 6px 10px;
+            border-radius: 6px;
+            font: 18px monospace;
+            transition: opacity .3s;
+        }
+
+        .robot:hover .tip {
+            opacity: 1;
+        }
 
         /* Mobile */
         @media (max-width:768px) {
-            .menu { display:none; position:absolute; top:80px; left:0; width:100%; background:var(--bg); flex-direction:column; padding:20px; border-top:1px solid rgba(214,204,153,.2); }
-            .menu.active { display:flex; }
-            .hamburger { display:block; }
-            .card { flex:0 0 80%; }
+            .menu {
+                display: none;
+                position: absolute;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background: var(--bg);
+                flex-direction: column;
+                padding: 20px;
+                border-top: 1px solid rgba(214, 204, 153, .2);
+            }
+
+            .menu.active {
+                display: flex;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .card {
+                flex: 0 0 80%;
+            }
+
+            .contact-wrapper {
+                padding: 24px;
+                margin: 0 16px;
+            }
         }
     </style>
     <svg width="0" height="0">
         <filter id="noise">
-            <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" stitchTiles="stitch"/>
-            <feColorMatrix values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 0.3 0"/>
+            <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" stitchTiles="stitch" />
+            <feColorMatrix values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 0.3 0" />
         </filter>
     </svg>
 </head>
+
 <body>
     <div class="container">
         <nav>
@@ -119,35 +547,32 @@
                     <li><a href="#">Home</a></li>
                     <li><a href="#about">About</a></li>
                     <li><a href="#services">Services</a></li>
-                    <li><a href="#" onclick="showNotif()">Contact</a></li>
+                    <li><a href="#contact">Contact</a></li>
                 </ul>
-                <div class="hamburger" onclick="this.parentElement.querySelector('.menu').classList.toggle('active')">☰</div>
+                <div class="hamburger" onclick="this.parentElement.querySelector('.menu').classList.toggle('active')">☰
+                </div>
             </div>
         </nav>
-
-        <div id="notif" onclick="closeNotif(event)">
-            <div class="notif-box">
-                <span id="closeBtn" onclick="closeNotif()">✖</span>
-                <p>Email Us 🥳:</p>
-                <strong>contact@futurelaboratory.tech</strong>
-                <button id="copyBtn" onclick="copyEmail(event)">Copy</button>
-            </div>
-        </div>
 
         <header class="hero">
             <h1><span id="typing-text"></span><span class="cursor" id="cursor"></span></h1>
             <h2>Where AI meets Humans</h2>
             <div class="kundalini" id="kundalini">
                 <svg viewBox="0 0 100 300" preserveAspectRatio="xMidYMid meet">
-                    <path class="staff" d="M50,280 L50,20"/>
-                    <path class="snake" d="M50,280 Q40,260 50,240 Q60,220 50,200 Q40,180 50,160 Q60,140 50,120 Q40,100 50,80 Q60,60 50,40 Q40,20 50,20"/>
+                    <path class="staff" d="M50,280 L50,20" />
+                    <path class="snake"
+                        d="M50,280 Q40,260 50,240 Q60,220 50,200 Q40,180 50,160 Q60,140 50,120 Q40,100 50,80 Q60,60 50,40 Q40,20 50,20" />
                     <g transform="translate(50,20)">
-                        <path d="M-30,0 Q-15,-20 0,0 Q15,-20 30,0" fill="none" stroke="var(--white)" stroke-width="3"/>
-                        <path d="M-25,-5 Q-12,-25 0,-5 Q12,-25 25,-5" fill="none" stroke="var(--white)" stroke-width="3"/>
-                        <path d="M-20,-10 Q-10,-30 0,-10 Q10,-30 20,-10" fill="none" stroke="var(--white)" stroke-width="3"/>
-                        <path d="M-15,-15 Q-7,-35 0,-15 Q7,-35 15,-15" fill="none" stroke="var(--white)" stroke-width="3"/>
-                        <path d="M-10,-20 Q-5,-40 0,-20 Q5,-40 10,-20" fill="none" stroke="var(--white)" stroke-width="3"/>
-                        <circle cx="0" cy="-45" r="8" fill="var(--white)"/>
+                        <path d="M-30,0 Q-15,-20 0,0 Q15,-20 30,0" fill="none" stroke="var(--white)" stroke-width="3" />
+                        <path d="M-25,-5 Q-12,-25 0,-5 Q12,-25 25,-5" fill="none" stroke="var(--white)"
+                            stroke-width="3" />
+                        <path d="M-20,-10 Q-10,-30 0,-10 Q10,-30 20,-10" fill="none" stroke="var(--white)"
+                            stroke-width="3" />
+                        <path d="M-15,-15 Q-7,-35 0,-15 Q7,-35 15,-15" fill="none" stroke="var(--white)"
+                            stroke-width="3" />
+                        <path d="M-10,-20 Q-5,-40 0,-20 Q5,-40 10,-20" fill="none" stroke="var(--white)"
+                            stroke-width="3" />
+                        <circle cx="0" cy="-45" r="8" fill="var(--white)" />
                     </g>
                 </svg>
             </div>
@@ -155,9 +580,17 @@
 
         <section id="about" class="about">
             <h2 class="sec-title">// ABOUT US //</h2>
-            <p>We are a **[research company]** dedicated to building advanced, human-centered technology that empowers organizations to solve complex problems with clarity, precision, and innovation. Our mission is to create tailored solutions that integrate seamlessly into real-world workflows—leveraging custom large language models, cutting-edge data science, and end-to-end full-stack engineering.</p>
-            <p>From bespoke APIs to specialized vision AI systems, we design and develop tools that are optimized for each client's unique data, challenges, and goals. Our work extends beyond engineering; we also craft intuitive digital experiences and compelling visual design that bring these technologies to life.</p>
-            <p>By combining deep technical expertise with thoughtful design and research-driven methodologies, we deliver solutions that not only enhance capability but elevate the entire digital ecosystem. As we continue to innovate, we remain committed to shaping technology that is practical, scalable, ethically grounded, and tailored for real impact.</p>
+            <p>We are a **[research company]** dedicated to building advanced, human-centered technology that empowers
+                organizations to solve complex problems with clarity, precision, and innovation. Our mission is to
+                create tailored solutions that integrate seamlessly into real-world workflows—leveraging custom large
+                language models, cutting-edge data science, and end-to-end full-stack engineering.</p>
+            <p>From bespoke APIs to specialized vision AI systems, we design and develop tools that are optimized for
+                each client's unique data, challenges, and goals. Our work extends beyond engineering; we also craft
+                intuitive digital experiences and compelling visual design that bring these technologies to life.</p>
+            <p>By combining deep technical expertise with thoughtful design and research-driven methodologies, we
+                deliver solutions that not only enhance capability but elevate the entire digital ecosystem. As we
+                continue to innovate, we remain committed to shaping technology that is practical, scalable, ethically
+                grounded, and tailored for real impact.</p>
         </section>
 
         <section id="services">
@@ -165,46 +598,70 @@
             <div class="carousel">
                 <button class="prev" onclick="scrollCarousel(-1)">❮</button>
                 <div class="services" id="servicesTrack">
-                    <div class="card" onmousemove="moveHalo(event)" onmouseleave="resetHalo(event)" data-icon="🧠" data-color="#b18dff">
-                        <div class="card-visual"><div class="diffusion"></div></div>
+                    <div class="card" onmousemove="moveHalo(event)" onmouseleave="resetHalo(event)" data-icon="🧠"
+                        data-color="#b18dff">
+                        <div class="card-visual">
+                            <div class="diffusion"></div>
+                        </div>
                         <div class="card-content">
                             <h3>Custom Large Language Models</h3>
-                            <p>We work on custom multimodular Large Language Models, fine-tuned for your specific domain and data.</p>
+                            <p>We work on custom multimodular Large Language Models, fine-tuned for your specific domain
+                                and data.</p>
                         </div>
                     </div>
-                    <div class="card" onmousemove="moveHalo(event)" onmouseleave="resetHalo(event)" data-icon="📊" data-color="#D6CC99">
-                        <div class="card-visual"><div class="diffusion"></div></div>
+                    <div class="card" onmousemove="moveHalo(event)" onmouseleave="resetHalo(event)" data-icon="📊"
+                        data-color="#D6CC99">
+                        <div class="card-visual">
+                            <div class="diffusion"></div>
+                        </div>
                         <div class="card-content">
                             <h3>Data Science & Engineering</h3>
-                            <p>Data processing, refining, and advanced analytics are our core expertise, turning raw data into actionable intelligence.</p>
+                            <p>Data processing, refining, and advanced analytics are our core expertise, turning raw
+                                data into actionable intelligence.</p>
                         </div>
                     </div>
-                    <div class="card" onmousemove="moveHalo(event)" onmouseleave="resetHalo(event)" data-icon="<>" data-color="#99D6C4">
-                        <div class="card-visual"><div class="diffusion"></div></div>
+                    <div class="card" onmousemove="moveHalo(event)" onmouseleave="resetHalo(event)" data-icon="<>"
+                        data-color="#99D6C4">
+                        <div class="card-visual">
+                            <div class="diffusion"></div>
+                        </div>
                         <div class="card-content">
                             <h3>Full Stack Development</h3>
-                            <p>Build a robust digital presence. We deliver full and resilient web design, deployment, and cloud infrastructure management.</p>
+                            <p>Build a robust digital presence. We deliver full and resilient web design, deployment,
+                                and cloud infrastructure management.</p>
                         </div>
                     </div>
-                    <div class="card" onmousemove="moveHalo(event)" onmouseleave="resetHalo(event)" data-icon="🔗" data-color="#ff5757">
-                        <div class="card-visual"><div class="diffusion"></div></div>
+                    <div class="card" onmousemove="moveHalo(event)" onmouseleave="resetHalo(event)" data-icon="🔗"
+                        data-color="#ff5757">
+                        <div class="card-visual">
+                            <div class="diffusion"></div>
+                        </div>
                         <div class="card-content">
                             <h3>Custom API Solutions</h3>
-                            <p>Discover a new level of integration with our custom API solutions, enhancing communication between all your systems.</p>
+                            <p>Discover a new level of integration with our custom API solutions, enhancing
+                                communication between all your systems.</p>
                         </div>
                     </div>
-                    <div class="card" onmousemove="moveHalo(event)" onmouseleave="resetHalo(event)" data-icon="👁️" data-color="#34db98">
-                        <div class="card-visual"><div class="diffusion"></div></div>
+                    <div class="card" onmousemove="moveHalo(event)" onmouseleave="resetHalo(event)" data-icon="👁️"
+                        data-color="#34db98">
+                        <div class="card-visual">
+                            <div class="diffusion"></div>
+                        </div>
                         <div class="card-content">
                             <h3>Custom Vision AI Models</h3>
-                            <p>Personalized Vision AI Models tailored for unparalleled accuracy in object detection, recognition, and insight extraction.</p>
+                            <p>Personalized Vision AI Models tailored for unparalleled accuracy in object detection,
+                                recognition, and insight extraction.</p>
                         </div>
                     </div>
-                    <div class="card" onmousemove="moveHalo(event)" onmouseleave="resetHalo(event)" data-icon="✨" data-color="#ffffff">
-                        <div class="card-visual"><div class="diffusion"></div></div>
+                    <div class="card" onmousemove="moveHalo(event)" onmouseleave="resetHalo(event)" data-icon="✨"
+                        data-color="#ffffff">
+                        <div class="card-visual">
+                            <div class="diffusion"></div>
+                        </div>
                         <div class="card-content">
                             <h3>Graphics & Visual Design</h3>
-                            <p>We create mathematically precise vector artwork and visual identities optimized for any resolution and digital platform.</p>
+                            <p>We create mathematically precise vector artwork and visual identities optimized for any
+                                resolution and digital platform.</p>
                         </div>
                     </div>
                 </div>
@@ -212,8 +669,19 @@
             </div>
         </section>
 
+        <section id="contact" class="contact-section">
+            <h2 class="sec-title">// CONTACT US //</h2>
+            <div class="contact-wrapper">
+                <p>Ready to collaborate? Click below to start a secure conversation via ProtonMail. This is a static page, so we use a direct email link.</p>
+                <a href="mailto:futurelaboratory@proton.me" class="contact-link">
+                    EMAIL FUTURELABORATORY@PROTON.ME
+                </a>
+            </div>
+        </section>
+
         <section class="cta">
-            <p>We are redefining the use of AI in all fields of human endeavour. Feel free to <a href="#" onclick="showNotif()">contact</a> us to see how we can help you improve your business.</p>
+            <p>We are redefining the use of AI in all fields of human endeavour. Feel free to <a
+                    href="#contact">contact</a> us to see how we can help you improve your business.</p>
         </section>
 
         <footer>
@@ -236,31 +704,59 @@
         const el = document.getElementById('typing-text');
         const cursor = document.getElementById('cursor');
         const kundalini = document.getElementById('kundalini');
-        function type() { 
+        function type() {
             if (i < txt.length) { el.textContent += txt[i++]; setTimeout(type, 100); }
         }
         setTimeout(type, 500);
 
-        // Notif
-        function showNotif() { document.getElementById('notif').style.display='flex'; }
-        function closeNotif(e) { if (!e || e.target.id==='notif' || e.target.id==='closeBtn') document.getElementById('notif').style.display='none'; }
-        function copyEmail(e) { e.stopPropagation(); navigator.clipboard.writeText('contact@futurelaboratory.tech'); const b=document.getElementById('copyBtn'); b.textContent='Copied!'; setTimeout(()=>{b.textContent='Copy';},1500); }
-
         // Card halo
-        function moveHalo(e) { const d=e.currentTarget.querySelector('.diffusion'); d.style.background = `radial-gradient(circle at ${e.clientX - d.getBoundingClientRect().left}px ${e.clientY - d.getBoundingClientRect().top}px, rgba(255,255,255,0.1), transparent 60%)`; }
+        function moveHalo(e) { const d = e.currentTarget.querySelector('.diffusion'); d.style.background = `radial-gradient(circle at ${e.clientX - d.getBoundingClientRect().left}px ${e.clientY - d.getBoundingClientRect().top}px, rgba(255,255,255,0.1), transparent 60%)`; }
         function resetHalo(e) { e.currentTarget.querySelector('.diffusion').style.background = ''; }
 
-        // Carousel auto-only
+        // Carousel - limits scroll to prevent empty space
         const track = document.getElementById('servicesTrack');
         const cards = track.children.length;
         let index = 0;
-        const cardWidth = 324;
-        function updateCarousel() { track.style.transform = `translateX(${-index * cardWidth}px)`; }
-        function scrollCarousel(dir) { index = (index + dir + cards) % cards; updateCarousel(); }
-        setInterval(() => scrollCarousel(1), 4000);
+        const cardWidth = 324; // Card width + gap (300px + 24px)
+        
+        // Calculate the maximum index to prevent scrolling past the last card
+        function getMaxIndex() {
+            const containerWidth = track.parentElement.clientWidth;
+            // Approximate number of visible cards (container width / single card width, rounded down)
+            const visibleCards = Math.floor(containerWidth / cardWidth); 
+            return Math.max(0, cards - visibleCards);
+        }
+
+        let maxIndex = getMaxIndex();
+
+        function updateCarousel() {
+            // Recalculate max index on resize/update to ensure proper limits
+            maxIndex = getMaxIndex();
+            if (index > maxIndex) index = maxIndex;
+
+            // Apply transform using CSS variable for card width for consistency
+            track.style.transform = `translateX(${-index * 324}px)`; 
+        }
+
+        function scrollCarousel(dir) {
+            index = index + dir;
+            if (index > maxIndex) index = 0; // Loop back to start
+            if (index < 0) index = maxIndex; // Loop back to end
+            updateCarousel();
+        }
+
+        // Auto-scroll logic 
+        setInterval(() => scrollCarousel(1), 4000); 
+
+        // Update carousel on window resize
+        window.addEventListener('resize', updateCarousel);
+        // Initial setup
+        updateCarousel();
+
 
         // Smooth scroll
-        document.querySelectorAll('a[href^="#"]').forEach(a=>{ a.addEventListener('click',e=>{ e.preventDefault(); const t=document.querySelector(a.getAttribute('href')); if(t) window.scrollTo({top:t.offsetTop-80,behavior:'smooth'}); }); });
+        document.querySelectorAll('a[href^="#"]').forEach(a => { a.addEventListener('click', e => { e.preventDefault(); const t = document.querySelector(a.getAttribute('href')); if (t) window.scrollTo({ top: t.offsetTop - 80, behavior: 'smooth' }); }); });
     </script>
 </body>
+
 </html>
